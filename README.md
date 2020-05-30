@@ -11,6 +11,7 @@ In addition, [Neural ODEs for undergraduate students](https://drive.google.com/f
 ## Installation
 
 ```bash
+#cloning the repo
 git clone
 
 pip3 install -r requirements.txt
