@@ -1,0 +1,3 @@
+tensorflow>=2.x
+tensorflow-scientific>=0.2.0.dev0
+numpy>=1.18
