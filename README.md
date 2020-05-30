@@ -18,4 +18,5 @@ git clone https://github.com/xAlpharax/NeuralODE-Notes-Projects
 pip3 install -r requirements.txt
 ```
 
-## Usage
+## Contributing
+In case someone would like this, pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
