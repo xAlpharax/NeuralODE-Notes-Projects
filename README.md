@@ -12,8 +12,9 @@ In addition, [Neural ODEs for undergraduate students](https://drive.google.com/f
 
 ```bash
 #cloning the repo
-git clone
+git clone https://github.com/xAlpharax/NeuralODE-Notes-Projects
 
+#install dependencies
 pip3 install -r requirements.txt
 ```
 
