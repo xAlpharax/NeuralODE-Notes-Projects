@@ -1,9 +1,11 @@
+#imports
 from tensorflow.keras.layers import Conv2D, BatchNormalization, Dense, Flatten, Input, MaxPooling2D, Dropout
 from tensorflow.keras.models import Model
+from odeblocktensorflow import ODEBlock
 
 ######################################################
 
-def build_model(input_shape, num_classes):
+def dcodnn(input_shape, num_classes):
     x = Input(input_shape)
     y = Conv2D(32, (3,3), activation='relu')(x)
     y = BatchNormalization(axis=-1)(y)
