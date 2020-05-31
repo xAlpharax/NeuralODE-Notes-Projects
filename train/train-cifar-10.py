@@ -2,7 +2,6 @@
 
 import tensorflow as tf
 from tensorflow.keras.datasets import cifar10
-from tensorflow.keras.utils import plot_model
 
 import sys
 sys.path.append('./')
@@ -11,7 +10,7 @@ sys.path.append('./')
 
 batch_size = 256
 num_classes = 10
-epochs = 30
+epochs = 1
 image_shape = (32, 32, 3)
 
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
@@ -42,7 +41,12 @@ h = dcodnn.fit(x_train, y_train,
 dcodnn.save_weights('weights/DCODNN-30-CIFAR10-weights.h5')
 
 #dcodnn.summary()
-#plot_model(dcodnn, show_shapes=True, to_file='assets/DCODNN-CIFAR-10-nnetwork.png')
+
+####################################################################
+
+from utils.visualization import visualize
+
+visualize(h)
 
 ####################################################################
 
