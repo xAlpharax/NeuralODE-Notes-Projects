@@ -10,7 +10,7 @@ sys.path.append('./')
 
 batch_size = 256
 num_classes = 10
-epochs = 1
+epochs = 30
 image_shape = (32, 32, 3)
 
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
@@ -27,16 +27,16 @@ from dcodnn import dcodnn
 dcodnn = dcodnn(image_shape, num_classes)
 
 dcodnn.compile(loss=tf.keras.losses.categorical_crossentropy,
-							optimizer=tf.keras.optimizers.Adadelta(2e-1),
-							metrics=['accuracy'])
+				optimizer=tf.keras.optimizers.Adadelta(2e-1),
+				metrics=['accuracy'])
 
 ####################################################################
 
 h = dcodnn.fit(x_train, y_train,
-							batch_size=batch_size,
-							epochs=epochs,
-							verbose=1,
-							validation_data=(x_test, y_test))
+				batch_size=batch_size,
+				epochs=epochs,
+				verbose=1,
+				validation_data=(x_test, y_test))
 
 dcodnn.save_weights('weights/DCODNN-30-CIFAR10-weights.h5')
 
@@ -46,7 +46,7 @@ dcodnn.save_weights('weights/DCODNN-30-CIFAR10-weights.h5')
 
 from utils.visualization import visualize
 
-visualize(h)
+visualize(h, 'CIFAR10-DCODNN')
 
 ####################################################################
 
