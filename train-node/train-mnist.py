@@ -25,7 +25,7 @@ y_test  = tf.keras.utils.to_categorical(y_test, num_classes)
 
 ####################################################################
 
-from tensorflow.keras.layers import Conv2D, Dense, Flatten, Input, MaxPooling2D, Dropout
+from tensorflow.keras.layers import Conv2D, Dense, Flatten, Input, MaxPooling2D
 from tensorflow.keras.models import Model
 from odeblocktensorflow import ODEBlock
 
@@ -34,7 +34,6 @@ def dcodnn(input_shape, num_classes):
     x = Input(input_shape)
     y = Conv2D(32, (3, 3), activation='relu')(x)
     y = MaxPooling2D((2,2))(y)
-    y = Dropout(0.1)(y)
 
     y = Conv2D(64, (3, 3), activation='relu')(y)
     y = MaxPooling2D((2,2))(y)
