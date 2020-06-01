@@ -34,11 +34,11 @@ def dcodnn(input_shape, num_classes):
     x = Input(input_shape)
     y = Conv2D(32, (3, 3), activation='relu')(x)
     y = MaxPooling2D((2,2))(y)
-    y = Dropout(0.1)(y)
+    #y = Dropout(0.1)(y)
 
     y = Conv2D(64, (3, 3), activation='relu')(y)
     y = MaxPooling2D((2,2))(y)
-    y = Dropout(0.1)(y)
+    #y = Dropout(0.1)(y)
 
     y = ODEBlock(64, (3, 3))(y)
     y = Flatten()(y)
@@ -48,7 +48,7 @@ def dcodnn(input_shape, num_classes):
 dcodnn = dcodnn(image_shape, num_classes)
 
 dcodnn.compile(loss=tf.keras.losses.categorical_crossentropy,
-				optimizer=tf.keras.optimizers.Adadelta(),
+				optimizer=tf.keras.optimizers.Adadelta(3e-1),
 				metrics=['accuracy'])
 
 ####################################################################
