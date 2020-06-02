@@ -45,5 +45,10 @@ python3 train-res/train-res-mnist.py
 | DCODNN      | val_acc: 0.7059     | **val_acc: 0.9865** |
 | DRCNN       | **val_acc: 0.7545** | val_acc: 0.9824     |
 
+***
+TO DO:
+1. use the odesolvers as functios or at least experiment with them
+2. expand assets with the visuals
+
 ## Contributing
 In case someone would like this, pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
