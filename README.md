@@ -22,8 +22,20 @@ pip3 install -q -r requirements.txt
 
 Training the network created in dcodnn.py can be done by running the following command. Note that the weights and visuals are placed in their separate directories respectively.
 ```bash
-#training DCODNN for 30 epochs with the given parameters
+#training DCODNN for 30 epochs with the given parameters (CIFAR)
 python3 train-node/train-cifar-10.py
+
+#training lighter DCODNN for 5 epochs with the given parameters (MNIST)
+python3 train-node/train-mnist.py
+```
+
+Moreover, training residual networks with similar structure as the ones above is done by:
+```bash
+#training DRCNN for 30 epochs with the given parameters (CIFAR)
+python3 train-res/train-res-cifar-10.py
+
+#training lighter DRCNN for 5 epochs with the given parameters (MNIST)
+python3 train-res/train-res-mnist.py
 ```
 
 ## Contributing
