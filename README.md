@@ -40,10 +40,10 @@ python3 train-res/train-res-mnist.py
 
 ## Results and comparison
 
-|             | CIFAR           | MNIST           |
-| ----------- |:---------------:| ----------------|
-| DCODNN      | val_acc: 0.7059 | val_acc: 0.9865 |
-| DRCNN       | val_acc: 0.7545 | val_acc: 0.9824 |
+|             | CIFAR               | MNIST               |
+| ----------- |:-------------------:| --------------------|
+| DCODNN      | val_acc: 0.7059     | **val_acc: 0.9865** |
+| DRCNN       | **val_acc: 0.7545** | val_acc: 0.9824     |
 
 ## Contributing
 In case someone would like this, pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
