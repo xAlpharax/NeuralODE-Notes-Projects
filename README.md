@@ -40,11 +40,10 @@ python3 train-res/train-res-mnist.py
 
 ## Results and comparison
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| ----------- | CIFAR           | MNIST           |
+| ----------- |:---------------:| ---------------:|
+| DCODNN      | val_acc: 0.7059 | val_acc: 0.9865 |
+| DRCNN       | val_acc: 0.7545 | val_acc: 0.9824 |
 
 ## Contributing
 In case someone would like this, pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
