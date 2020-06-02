@@ -27,16 +27,16 @@ from dcodnn import dcodnn
 dcodnn = dcodnn(image_shape, num_classes)
 
 dcodnn.compile(loss=tf.keras.losses.categorical_crossentropy,
-				optimizer=tf.keras.optimizers.Adadelta(2e-1),
-				metrics=['accuracy'])
+                optimizer=tf.keras.optimizers.Adadelta(2e-1),
+                metrics=['accuracy'])
 
 ####################################################################
 
 h = dcodnn.fit(x_train, y_train,
-				batch_size=batch_size,
-				epochs=epochs,
-				verbose=1,
-				validation_data=(x_test, y_test))
+                batch_size=batch_size,
+                epochs=epochs,
+                verbose=1,
+                validation_data=(x_test, y_test))
 
 dcodnn.save_weights('weights/DCODNN-30-CIFAR10-weights.h5')
 

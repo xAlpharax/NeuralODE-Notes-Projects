@@ -28,39 +28,39 @@ from resblocktensorflow import ResBlock
 
 #lighter drcnn than on cifar
 def drcnn(input_shape, num_classes):
-	x = Input(input_shape)
-	y = Conv2D(32, (3,3), activation='relu')(x)
-	y = BatchNormalization(axis=-1)(y)
-	y = MaxPooling2D((2,2))(y)
-	y = Dropout(0.1)(y)
+    x = Input(input_shape)
+    y = Conv2D(32, (3,3), activation='relu')(x)
+    y = BatchNormalization(axis=-1)(y)
+    y = MaxPooling2D((2,2))(y)
+    y = Dropout(0.1)(y)
 
-	y = Conv2D(64, (3,3), activation='relu')(y)
-	y = BatchNormalization(axis=-1)(y)
-	y = Conv2D(64, (3,3), activation='relu')(y)
-	y = BatchNormalization(axis=-1)(y)
-	y = MaxPooling2D((2,2))(y)
-	y = Dropout(0.1)(y)
+    y = Conv2D(64, (3,3), activation='relu')(y)
+    y = BatchNormalization(axis=-1)(y)
+    y = Conv2D(64, (3,3), activation='relu')(y)
+    y = BatchNormalization(axis=-1)(y)
+    y = MaxPooling2D((2,2))(y)
+    y = Dropout(0.1)(y)
 
-	y = ResBlock(64, (3,3))(y)
-	y = BatchNormalization(axis=-1)(y)
-	y = Flatten()(y)
-	y = Dense(256, activation='relu')(y)
-	y = Dense(num_classes, activation='softmax')(y)
-	return Model(x,y)
+    y = ResBlock(64, (3,3))(y)
+    y = BatchNormalization(axis=-1)(y)
+    y = Flatten()(y)
+    y = Dense(256, activation='relu')(y)
+    y = Dense(num_classes, activation='softmax')(y)
+    return Model(x,y)
 
 drcnn = drcnn(image_shape, num_classes)
 
 drcnn.compile(loss=tf.keras.losses.categorical_crossentropy,
-			optimizer=tf.keras.optimizers.Adadelta(2e-1),
-			metrics=['accuracy'])
+            optimizer=tf.keras.optimizers.Adadelta(2e-1),
+            metrics=['accuracy'])
 
 ####################################################################
 
 h = drcnn.fit(x_train, y_train,
-			batch_size=batch_size,
-			epochs=epochs,
-			verbose=1,
-			validation_data=(x_test, y_test))
+            batch_size=batch_size,
+            epochs=epochs,
+            verbose=1,
+            validation_data=(x_test, y_test))
 
 drcnn.save_weights('weights/resweights/DRCNN-30-CIFAR10-weights.h5')
 

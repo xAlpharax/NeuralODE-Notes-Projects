@@ -48,16 +48,16 @@ def drcnn(input_shape, num_classes):
 drcnn = drcnn(image_shape, num_classes)
 
 drcnn.compile(loss=tf.keras.losses.categorical_crossentropy,
-			optimizer=tf.keras.optimizers.Adadelta(3e-1),
-			metrics=['accuracy'])
+            optimizer=tf.keras.optimizers.Adadelta(3e-1),
+            metrics=['accuracy'])
 
 ####################################################################
 
 h = drcnn.fit(x_train, y_train,
-			batch_size=batch_size,
-        	epochs=epochs,
-			verbose=1,
-			validation_data=(x_test, y_test))
+            batch_size=batch_size,
+            epochs=epochs,
+            verbose=1,
+            validation_data=(x_test, y_test))
 
 drcnn.save_weights('weights/resweights/DRCNN-MNIST-weights.h5')
 
