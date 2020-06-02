@@ -38,5 +38,13 @@ python3 train-res/train-res-cifar-10.py
 python3 train-res/train-res-mnist.py
 ```
 
+## Results and comparison
+
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
 ## Contributing
 In case someone would like this, pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
