@@ -15,7 +15,14 @@ In addition, [Neural ODEs for undergraduate students](https://drive.google.com/f
 git clone https://github.com/xAlpharax/NeuralODE-Notes-Projects
 
 #install dependencies
-pip3 install -r requirements.txt
+pip3 install -q -r requirements.txt
+```
+
+## Training
+
+```bash
+#training DCODNN for 30 epochs with the given parameters
+python3 train-node/train-cifar-10.py
 ```
 
 ## Contributing
