@@ -4,7 +4,7 @@ import pygal
 import sys
 sys.path.append('./')
 
-######################################################
+#############################################################
 
 def visualize(h, name):
     graphacc = pygal.Line() #style=pygal.style.RotateStyle('#9e6ffe'), interpolate='hermite'
@@ -14,7 +14,7 @@ def visualize(h, name):
 
     graphacc.render_to_file('assets/visual/' + name + '-Accuracy.svg')
 
-    ######################################################
+    #############################################################
 
     graphloss = pygal.Line() #style=pygal.style.RotateStyle('#9e6ffe'), interpolate='hermite'
     graphloss.title = 'Loss'

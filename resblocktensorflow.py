@@ -2,7 +2,7 @@
 import tensorflow as tf
 import tensorflow.keras.backend as K
 
-######################################################
+#############################################################
 
 class ResBlock(tf.keras.layers.Layer):
 
@@ -34,4 +34,4 @@ class ResBlock(tf.keras.layers.Layer):
     def compute_output_shape(self, input_shape):
         return input_shape
 
-######################################################
+#############################################################
