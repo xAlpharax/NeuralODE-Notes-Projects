@@ -1,4 +1,6 @@
 #Get CelebA Dataset
+import sys
+sys.path.append('./')
 from utils.CelebADataset import CelebA
 
 celeb = CelebA()
