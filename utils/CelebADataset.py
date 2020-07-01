@@ -1,10 +1,12 @@
 ##########################################################################################################
 
+#mounting drive folder into dir
 from google.colab import drive
 drive.mount('/content/drive')
 
 ########################################################################################
 
+#imports
 import zipfile as zipf
 from PIL import Image
 import numpy as np
