@@ -1,5 +1,8 @@
 ##########################################################################################################
 
+import sys
+sys.path.append('./')
+
 #mounting drive folder into dir
 from google.colab import drive
 drive.mount('/content/drive')
