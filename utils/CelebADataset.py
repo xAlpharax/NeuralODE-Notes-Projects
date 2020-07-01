@@ -1,11 +1,8 @@
 ##########################################################################################################
 
-import sys
-sys.path.append('./')
-
 #mounting drive folder into dir
 from google.colab import drive
-drive.mount('/content/drive')
+drive.mount('/content/NeuralODE-Notes-Projects/drive')
 
 ########################################################################################
 
