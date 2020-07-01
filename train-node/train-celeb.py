@@ -39,7 +39,7 @@ def DCODNN(input_shape, num_classes):
   y = Flatten()(y)
   y = Dense(512, activation='relu')(y)
   y = Dense(num_classes, activation='softmax')(y)
-    return Model(x,y)
+  return Model(x,y)
 
 #############################################################
 
