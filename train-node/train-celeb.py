@@ -58,6 +58,7 @@ x_train = train[0]
 x_test = test[0]
 
 x_test = (x_test / 127.5) - 1
+x_test = np.float32(x_test)
 
 y_train = train[1]
 y_test = test[1]
