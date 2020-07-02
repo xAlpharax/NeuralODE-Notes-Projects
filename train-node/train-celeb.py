@@ -33,7 +33,7 @@ def DCODNN(input_shape, num_classes):
   y = BatchNormalization(axis=-1)(y)
   y = Dropout(0.2)(y)
   
-  y = ODEBlock(256, (3,3))(y)
+  y = ODEBlock(128, (3,3))(y)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
   y = Dropout(0.1)(y)
@@ -64,6 +64,7 @@ y_test = test[1]
 ######################################################
 
 import tensorflow as tf
+import numpy as np
 
 optimizer = tf.keras.optimizers.Adadelta(3e-2) # Adadelta optimizer
 loss_fn = tf.keras.losses.CategoricalCrossentropy() # Categorical Loss for categorical labels
