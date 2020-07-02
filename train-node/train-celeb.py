@@ -97,6 +97,7 @@ for epoch in range(epochs):
 
     # normalize data between -1 and 1
     inputs = (inputs / 127.5) - 1
+    inputs = np.float32(inputs)
 
     trainfn(DCODNN, inputs, labels)
 
