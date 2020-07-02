@@ -50,6 +50,7 @@ DCODNN = DCODNN((110, 90, 3), 2)
 batch_size = 512
 epochs = 50
 
+import numpy as np
 training_loss, testing_loss = np.array([[]]), np.array([[]])
 training_acc, testing_acc = np.array([[]]), np.array([[]])
 
@@ -64,7 +65,6 @@ y_test = test[1]
 ######################################################
 
 import tensorflow as tf
-import numpy as np
 
 optimizer = tf.keras.optimizers.Adadelta(3e-2) # Adadelta optimizer
 loss_fn = tf.keras.losses.CategoricalCrossentropy() # Categorical Loss for categorical labels
