@@ -33,7 +33,7 @@ def DCODNN(input_shape, num_classes):
   y = BatchNormalization(axis=-1)(y)
   y = Dropout(0.2)(y)
   
-  y = ODEBlock(128, (3,3))(y)
+  y = ODEBlock(256, (3,3))(y)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
   y = Dropout(0.1)(y)
@@ -107,7 +107,7 @@ for epoch in range(epochs):
   
   epoch_time = int(time.time() - start_epoch_time)
   loss_at_epoch = loss_fn(labels, DCODNN(inputs).numpy())
-  testing_loss_at_epoch = loss_fn(y_test[:3], DCODNN(x_test[:3]).numpy())
+  testing_loss_at_epoch = loss_fn(y_test[:7], DCODNN(x_test[:7]).numpy())
 
   _ = metric.update_state(y_test[:3], DCODNN(x_test[:3]).numpy())
   testing_acc_at_epoch = metric.result().numpy()
