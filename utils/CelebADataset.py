@@ -62,7 +62,7 @@ class CelebA:
         
         
         celeb_img = np.array(celeb_img) #dtype='float32'
-        celeb_label = np.array(celeb_label, dtype='float32') # dtype='uint32'
+        celeb_label = np.array(celeb_label) # dtype='float32' # dtype='uint32'
             
         return celeb_img, celeb_label
 

@@ -118,14 +118,14 @@ for epoch in range(epochs):
 
 #############################################################################################
 
-rand = np.random.randint(10000) #85
+# rand = np.random.randint(10000) #85
 
-inp = np.expand_dims(x_train[rand], axis = 0)
-#print(inp.shape)
+# inp = np.expand_dims(x_train[rand], axis = 0)
+# #print(inp.shape)
 
-print("\n")
-print(DCODNN(inp).numpy())
-print(y_train[rand])
+# print("\n")
+# print(DCODNN(inp).numpy())
+# print(y_train[rand])
 
 ######################################################
 
