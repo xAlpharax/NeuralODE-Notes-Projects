@@ -107,9 +107,9 @@ for epoch in range(epochs):
   
   # epoch_time = int(time.time() - start_epoch_time)
   loss_at_epoch = loss_fn(labels, DCODNN(inputs).numpy())
-  testing_loss_at_epoch = loss_fn(y_test[6:7], DCODNN(x_test[6:7]).numpy())
+  testing_loss_at_epoch = loss_fn(y_test[:5], DCODNN(x_test[:5]).numpy())
 
-  _ = metric.update_state(y_test[2:3], DCODNN(x_test[2:3]).numpy())
+  _ = metric.update_state(y_test[:5], DCODNN(x_test[:5]).numpy())
   testing_acc_at_epoch = metric.result().numpy()
 
   epoch_time = int(time.time() - start_epoch_time)
