@@ -24,8 +24,9 @@ from odeblocktensorflow import ODEBlock
 
 def DCODNN(input_shape, num_classes):
   x = Input(input_shape)
-  y = Conv2D(64, (5,5), strides=2, activation='relu')(x)
+  y = Conv2D(64, (5,5), activation='relu')(x)
   y = BatchNormalization(axis=-1)(y)
+  y = MaxPooling2D(2,2)(y)
   y = Dropout(0.3)(y)
   
   y = Conv2D(128, (5,5), activation='relu')(y)
@@ -106,14 +107,12 @@ for epoch in range(epochs):
     _ = metric.update_state(labels, DCODNN(inputs).numpy())
     acc_at_epoch = metric.result().numpy()
   
-  # epoch_time = int(time.time() - start_epoch_time)
+  epoch_time = int(time.time() - start_epoch_time)
   loss_at_epoch = loss_fn(labels, DCODNN(inputs).numpy())
   testing_loss_at_epoch = loss_fn(y_test[:5], DCODNN(x_test[:5]).numpy())
 
   _ = metric.update_state(y_test[:5], DCODNN(x_test[:5]).numpy())
   testing_acc_at_epoch = metric.result().numpy()
-
-  epoch_time = int(time.time() - start_epoch_time)
 
   training_loss, testing_loss = np.append(training_loss, loss_at_epoch), np.append(testing_loss, testing_loss_at_epoch)
   training_acc, testing_acc = np.append(training_acc, acc_at_epoch), np.append(testing_acc, testing_acc_at_epoch)
