@@ -26,7 +26,7 @@ def DCODNN(input_shape, num_classes):
   x = Input(input_shape)
   y = Conv2D(64, (5,5), strides=2, activation='relu')(x)
   y = BatchNormalization(axis=-1)(y)
-  y = Dropout(0.2)(y)
+  y = Dropout(0.3)(y)
   
   y = Conv2D(128, (5,5), activation='relu')(y)
   y = Conv2D(256, (5,5), activation='relu')(y)
@@ -40,7 +40,7 @@ def DCODNN(input_shape, num_classes):
   y = Dropout(0.1)(y)
   
   y = Flatten()(y)
-  y = Dense(512, activation='sigmoid')(y)
+  y = Dense(1024, activation='sigmoid')(y)
   y = Dense(num_classes, activation='softmax')(y)
   return Model(x,y)
 
