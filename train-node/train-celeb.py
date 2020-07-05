@@ -53,8 +53,11 @@ batch_size = 512
 epochs = 50
 
 import numpy as np
-training_loss, testing_loss = np.array([[]]), np.array([[]])
-training_acc, testing_acc = np.array([[]]), np.array([[]])
+# training_loss, testing_loss = np.array([[]]), np.array([[]])
+# training_acc, testing_acc = np.array([[]]), np.array([[]])
+
+training_loss = []
+training_acc = []
 
 x_train = train[0]
 x_test = test[0]
@@ -88,8 +91,42 @@ import time
 
 ### TRAINING CUSTOM DCODNN ###
 
+# for epoch in range(epochs):
+#   start_epoch_time = time.time()
+
+#   for index in range(0, total_size, batch_size):
+#     end_index = total_size if index + batch_size > total_size else index + batch_size
+
+#     inputs = x_train[index:end_index] # Slicing operation
+#     labels = y_train[index:end_index] # Slicing operation
+#     #print(inputs.shape)
+
+#     # normalize data between -1 and 1
+#     inputs = (inputs / 127.5) - 1
+#     inputs = np.float32(inputs)
+
+#     trainfn(DCODNN, inputs, labels)
+
+#     _ = metric.update_state(labels, DCODNN(inputs).numpy())
+#     acc_at_epoch = metric.result().numpy()
+  
+#   epoch_time = int(time.time() - start_epoch_time)
+#   loss_at_epoch = loss_fn(labels, DCODNN(inputs).numpy())
+#   testing_loss_at_epoch = loss_fn(y_test[:5], DCODNN(x_test[:5]).numpy())
+
+#   _ = metric.update_state(y_test[:5], DCODNN(x_test[:5]).numpy())
+#   testing_acc_at_epoch = metric.result().numpy()
+
+#   training_loss, testing_loss = np.append(training_loss, loss_at_epoch), np.append(testing_loss, testing_loss_at_epoch)
+#   training_acc, testing_acc = np.append(training_acc, acc_at_epoch), np.append(testing_acc, testing_acc_at_epoch)
+#   print("Finished epoch: {:02d} with loss: {:.10f} and time taken: {:03d}s".format(epoch+1, float(loss_at_epoch.numpy()), epoch_time))
+
+
+
 for epoch in range(epochs):
   start_epoch_time = time.time()
+  epoch_loss_avg = tf.keras.metrics.Mean()
+  epoch_accuracy = tf.keras.metrics.CategoricalAccuracy()
 
   for index in range(0, total_size, batch_size):
     end_index = total_size if index + batch_size > total_size else index + batch_size
@@ -104,25 +141,21 @@ for epoch in range(epochs):
 
     trainfn(DCODNN, inputs, labels)
 
-    _ = metric.update_state(labels, DCODNN(inputs).numpy())
-    acc_at_epoch = metric.result().numpy()
+    epoch_loss_avg.update_state(loss_fn(labels, DCODNN(inputs)))
+    epoch_accuracy.update_state(labels, DCODNN(inputs, training=True))
   
   epoch_time = int(time.time() - start_epoch_time)
-  loss_at_epoch = loss_fn(labels, DCODNN(inputs).numpy())
-  testing_loss_at_epoch = loss_fn(y_test[:5], DCODNN(x_test[:5]).numpy())
+  training_loss.append(epoch_loss_avg.result())
+  training_acc.append(epoch_accuracy.result())
 
-  _ = metric.update_state(y_test[:5], DCODNN(x_test[:5]).numpy())
-  testing_acc_at_epoch = metric.result().numpy()
+  print("Finished epoch: {:02d} with loss: {:.10f} and time taken: {:03d}s".format(epoch+1, float(training_loss.numpy()), epoch_time))
 
-  training_loss, testing_loss = np.append(training_loss, loss_at_epoch), np.append(testing_loss, testing_loss_at_epoch)
-  training_acc, testing_acc = np.append(training_acc, acc_at_epoch), np.append(testing_acc, testing_acc_at_epoch)
-  print("Finished epoch: {:02d} with loss: {:.10f} and time taken: {:03d}s".format(epoch+1, float(loss_at_epoch.numpy()), epoch_time))
 
 #############################################################################################
 
 from utils.visualization import customvis
 
-customvis('CELEBA-DCODNN', training_acc, testing_acc, training_loss, testing_loss)
+customvis('CELEBA-DCODNN', training_acc, training_loss) # training_acc, testing_acc, training_loss, testing_loss
 
 #############################################################
 
