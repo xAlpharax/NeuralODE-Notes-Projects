@@ -120,17 +120,6 @@ for epoch in range(epochs):
 
 #############################################################################################
 
-rand = np.random.randint(10000) #85
-
-inp = np.expand_dims(x_train[rand], axis = 0)
-#print(inp.shape)
-
-print("\n")
-print(DCODNN(inp, training=False).numpy())
-print(y_train[rand])
-
-######################################################
-
 from utils.visualization import customvis
 
 customvis('CELEBA-DCODNN', training_acc, testing_acc, training_loss, testing_loss)
