@@ -29,11 +29,11 @@ def DCODNN(input_shape, num_classes):
   y = Dropout(0.3)(y)
   
   y = Conv2D(128, (5,5), strides=2, activation='relu')(y)
-  y = Conv2D(128, (5,5), activation='relu')(y)
+  y = Conv2D(256, (5,5), activation='relu')(y)
   y = BatchNormalization(axis=-1)(y)
   y = Dropout(0.2)(y)
   
-  y = ODEBlock(128, (3,3))(y)
+  y = ODEBlock(256, (3,3))(y)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
   y = Dropout(0.1)(y)
@@ -120,14 +120,14 @@ for epoch in range(epochs):
 
 #############################################################################################
 
-# rand = np.random.randint(10000) #85
+rand = np.random.randint(10000) #85
 
-# inp = np.expand_dims(x_train[rand], axis = 0)
-# #print(inp.shape)
+inp = np.expand_dims(x_train[rand], axis = 0)
+#print(inp.shape)
 
-# print("\n")
-# print(DCODNN(inp).numpy())
-# print(y_train[rand])
+print("\n")
+print(DCODNN(inp, training=False).numpy())
+print(y_train[rand])
 
 ######################################################
 
