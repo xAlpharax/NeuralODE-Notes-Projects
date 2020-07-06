@@ -40,15 +40,17 @@ python3 train-res/train-res-mnist.py
 
 ## Results and comparison
 
-|             | CIFAR               | MNIST               |
-| ----------- |:-------------------:| --------------------|
-| DCODNN      | val_acc: 0.7059     | **val_acc: 0.9865** |
-| DRCNN       | **val_acc: 0.7545** | val_acc: 0.9824     |
+|             | CELEBA               | CIFAR               | MNIST               |
+| ----------- |:--------------------:|:-------------------:| ------------------- |
+| DCODNN      | **val_acc: 0.9959**  | val_acc: 0.7059     | **val_acc: 0.9865** | 
+| DRCNN       |                      | **val_acc: 0.7545** | val_acc: 0.9824     |
+
+## Additional weights
+CelebA DCODNN and DRCNN weights are large files(~100MB) and so would slow down the repository. Download from [drive](https://drive.google.com/drive/folders/1Rxa4Obpkz_5gmlW2gmFwnYa9GtLBkYDc?usp=sharing)
 
 ***
 TO DO:
 1. use the odesolvers as functios or at least experiment with them
-2. doing node on CelebA
 
 View on [trello](https://trello.com/b/0BtjvVZK/neuralode-notes-projects)
 
