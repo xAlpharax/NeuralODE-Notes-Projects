@@ -1,6 +1,6 @@
 # Neural Ordinary Differential Equations
 
-Repository for notes, snippets, and projects on NODEs. Includes results after training CNN based networks with different methods on MNIST and CIFAR-10 datasets accordingly.
+ Repository for notes, projects and snippets on NODEs. Includes results after training CNN based networks with different methods on MNIST, CIFAR-10 and CelebA datasets accordingly.
 
 ## Introduction
 
@@ -22,7 +22,10 @@ pip3 install -qq -r requirements.txt
 
 Training the network created in dcodnn.py can be done by running the following command. Note that the weights and visuals are placed in their separate directories respectively.
 ```bash
-#training DCODNN for 30 epochs with the given parameters (CIFAR)
+#training large DCODNN for 50 epochs with the given parameters (CELEBA)
+python3 train-node/train-celeb.py
+
+#training medium DCODNN for 30 epochs with the given parameters (CIFAR)
 python3 train-node/train-cifar-10.py
 
 #training lighter DCODNN for 5 epochs with the given parameters (MNIST)
@@ -31,7 +34,7 @@ python3 train-node/train-mnist.py
 
 Moreover, training residual networks with similar structure as the ones above is done by:
 ```bash
-#training DRCNN for 30 epochs with the given parameters (CIFAR)
+#training medium DRCNN for 30 epochs with the given parameters (CIFAR)
 python3 train-res/train-res-cifar-10.py
 
 #training lighter DRCNN for 5 epochs with the given parameters (MNIST)
