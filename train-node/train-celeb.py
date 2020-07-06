@@ -111,8 +111,8 @@ for epoch in range(epochs):
   epoch_time = int(time.time() - start_epoch_time)
   # loss_at_epoch = loss_fn(labels, DCODNN(inputs).numpy())
 
-  testing_loss_at_epoch = np.mean(loss_fn(y_test[:5], DCODNN(x_test[:5]).numpy()))
-  _ = metric.update_state(y_test[:5], DCODNN(x_test[:5]).numpy())
+  testing_loss_at_epoch = np.mean(loss_fn(y_test[:100], DCODNN(x_test[:100]).numpy()))
+  _ = metric.update_state(y_test[:100], DCODNN(x_test[:100]).numpy())
   testing_acc_at_epoch = metric.result().numpy()
 
   training_loss, testing_loss = np.append(training_loss, loss_at_epoch), np.append(testing_loss, testing_loss_at_epoch)
