@@ -15,7 +15,7 @@ In addition, [Neural ODEs for undergraduate students](https://drive.google.com/f
 git clone https://github.com/xAlpharax/NeuralODE-Notes-Projects
 
 #install dependencies
-pip3 install -q -r requirements.txt
+pip3 install -qq -r requirements.txt
 ```
 
 ## Training
