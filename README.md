@@ -48,7 +48,7 @@ python3 train-res/train-res-mnist.py
 ![CelebA Accuracy](assets/celebvisuals/CELEBA-DCODNN-Accuracy.svg)
 
 ## Additional weights
-CelebA DCODNN and DRCNN weights are large files(~100MB) and so would slow down the repository. Download from [drive](https://drive.google.com/drive/folders/1Rxa4Obpkz_5gmlW2gmFwnYa9GtLBkYDc?usp=sharing)
+CelebA weights are large files(~100MB) and so would slow down the repository. Download from [drive](https://drive.google.com/drive/folders/1Rxa4Obpkz_5gmlW2gmFwnYa9GtLBkYDc?usp=sharing)
 
 ***
 TO DO:
