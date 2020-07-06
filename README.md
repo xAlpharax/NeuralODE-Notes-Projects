@@ -48,7 +48,9 @@ python3 train-res/train-res-mnist.py
 ***
 TO DO:
 1. use the odesolvers as functios or at least experiment with them
-2. expand assets with the visuals
+2. doing node on CelebA
+
+View on [trello](https://trello.com/b/0BtjvVZK/neuralode-notes-projects)
 
 ## Contributing
 In case someone would like this, pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

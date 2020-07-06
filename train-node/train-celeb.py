@@ -111,13 +111,13 @@ for epoch in range(epochs):
   epoch_time = int(time.time() - start_epoch_time)
   # loss_at_epoch = loss_fn(labels, DCODNN(inputs).numpy())
 
-  testing_loss_at_epoch = loss_fn(y_test[:5], DCODNN(x_test[:5]).numpy())
+  testing_loss_at_epoch = np.mean(loss_fn(y_test[:5], DCODNN(x_test[:5]).numpy()))
   _ = metric.update_state(y_test[:5], DCODNN(x_test[:5]).numpy())
   testing_acc_at_epoch = metric.result().numpy()
 
   training_loss, testing_loss = np.append(training_loss, loss_at_epoch), np.append(testing_loss, testing_loss_at_epoch)
   training_acc, testing_acc = np.append(training_acc, acc_at_epoch), np.append(testing_acc, testing_acc_at_epoch)
-  print("Finished epoch: {:02d} with loss: {:.10f} and time taken: {:03d}s".format(epoch+1, float(loss_at_epoch.numpy()), epoch_time))
+  print("Finished epoch: {:02d} with loss: {:.10f} and time taken: {:03d}s".format(epoch+1, loss_at_epoch, epoch_time))
 
 #############################################################################################
 
