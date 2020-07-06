@@ -38,7 +38,7 @@ h = dcodnn.fit(x_train, y_train,
                 verbose=1,
                 validation_data=(x_test, y_test))
 
-dcodnn.save_weights('weights/DCODNN-30-CIFAR10-weights.h5')
+dcodnn.save_weights('weights/DCODNN-CIFAR10-weights.h5')
 
 #dcodnn.summary()
 

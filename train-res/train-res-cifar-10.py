@@ -62,7 +62,7 @@ h = drcnn.fit(x_train, y_train,
             verbose=1,
             validation_data=(x_test, y_test))
 
-drcnn.save_weights('weights/resweights/DRCNN-30-CIFAR10-weights.h5')
+drcnn.save_weights('weights/resweights/DRCNN-CIFAR10-weights.h5')
 
 #drcnn.summary()
 
