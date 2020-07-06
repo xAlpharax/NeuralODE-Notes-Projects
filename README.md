@@ -45,6 +45,8 @@ python3 train-res/train-res-mnist.py
 | DCODNN      | **val_acc: 0.9959**  | val_acc: 0.7059     | **val_acc: 0.9865** | 
 | DRCNN       |                      | **val_acc: 0.7545** | val_acc: 0.9824     |
 
+![CelebA Accuracy](assets/celebvisuals/CELEBA-DCODNN-Accuracy.svg)
+
 ## Additional weights
 CelebA DCODNN and DRCNN weights are large files(~100MB) and so would slow down the repository. Download from [drive](https://drive.google.com/drive/folders/1Rxa4Obpkz_5gmlW2gmFwnYa9GtLBkYDc?usp=sharing)
 
