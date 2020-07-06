@@ -56,8 +56,8 @@ import numpy as np
 # training_loss, testing_loss = np.array([[]]), np.array([[]])
 # training_acc, testing_acc = np.array([[]]), np.array([[]])
 
-training_loss = []
-training_acc = []
+training_loss, testing_loss = [], []
+training_acc, testing_acc = [], []
 
 x_train = train[0]
 x_test = test[0]
@@ -74,7 +74,7 @@ import tensorflow as tf
 
 optimizer = tf.keras.optimizers.Adadelta(3e-2) # Adadelta optimizer
 loss_fn = tf.keras.losses.CategoricalCrossentropy() # Categorical Loss for categorical labels
-metric = tf.keras.metrics.CategoricalAccuracy() # Categorical Accuracy
+# metric = tf.keras.metrics.CategoricalAccuracy() # Categorical Accuracy
 
 @tf.function
 def trainfn(model, inputs, labels):
@@ -125,8 +125,8 @@ import time
 
 for epoch in range(epochs):
   start_epoch_time = time.time()
-  epoch_loss_avg = tf.keras.metrics.Mean()
-  epoch_accuracy = tf.keras.metrics.CategoricalAccuracy()
+  epoch_loss_avg, test_epoch_loss = tf.keras.metrics.Mean(), tf.keras.metrics.Mean()
+  epoch_accuracy, test_epoch_accuracy = tf.keras.metrics.CategoricalAccuracy(), tf.keras.metrics.CategoricalAccuracy()
 
   for index in range(0, total_size, batch_size):
     end_index = total_size if index + batch_size > total_size else index + batch_size
@@ -141,21 +141,26 @@ for epoch in range(epochs):
 
     trainfn(DCODNN, inputs, labels)
 
-    epoch_loss_avg.update_state(loss_fn(labels, DCODNN(inputs)))
+    epoch_loss_avg.update_state(loss_fn(labels, DCODNN(inputs, training=True)))
     epoch_accuracy.update_state(labels, DCODNN(inputs, training=True))
   
+  test_epoch_loss.update_state(loss_fn(y_test, DCODNN(x_test, training=True)))
+  test_epoch_accuracy.update_state(y_test, DCODNN(x_test, training=True))
+
   epoch_time = int(time.time() - start_epoch_time)
   training_loss.append(epoch_loss_avg.result())
+  testing_loss.append(test_epoch_loss.result())
   training_acc.append(epoch_accuracy.result())
+  testing_acc.append(test_epoch_accuracy.result())
 
-  print("Finished epoch: {:02d} with loss: {:.10f} and time taken: {:03d}s".format(epoch+1, float(training_loss.numpy()), epoch_time))
+  print("Finished epoch: {:02d} with loss: {:.10f} and time taken: {:03d}s".format(epoch+1, float(epoch_loss_avg.result()), epoch_time))
 
 
 #############################################################################################
 
 from utils.visualization import customvis
 
-customvis('CELEBA-DCODNN', training_acc, training_loss) # training_acc, testing_acc, training_loss, testing_loss
+customvis('CELEBA-DCODNN', training_acc, testing_acc, training_loss, testing_loss)
 
 #############################################################
 
