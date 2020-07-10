@@ -46,7 +46,7 @@ python3 train-res/train-res-mnist.py
 |             | CELEBA               | CIFAR               | MNIST               |
 | ----------- |:--------------------:|:-------------------:| ------------------- |
 | DCODNN      | **val_acc: 0.9959**  | val_acc: 0.7059     | **val_acc: 0.9865** | 
-| DRCNN       |                      | **val_acc: 0.7545** | val_acc: 0.9824     |
+| DRCNN       | val_acc: 0.9720      | **val_acc: 0.7545** | val_acc: 0.9824     |
 
 ![CelebA Accuracy](assets/celebvisuals/CELEBA-DCODNN-Accuracy.svg)
 
