@@ -44,6 +44,8 @@ python3 train-res/train-res-cifar-10.py
 python3 train-res/train-res-mnist.py
 ```
 
+In regards to interractive training, there is a [Colab Notebook](https://colab.research.google.com/drive/1Rds-6mvsC2VGi0k-P0R0qQVsVaWrWFPg?usp=sharing) for just that.
+
 ## Results and comparison
 
 |             | CELEBA               | CIFAR               | MNIST               |
