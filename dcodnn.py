@@ -4,6 +4,8 @@ from tensorflow.keras.models import Model
 from odeblocktensorflow import ODEBlock
 
 ######################################################
+#####               medium dcodnn                #####
+######################################################
 
 def dcodnn(input_shape, num_classes):
     x = Input(input_shape)
