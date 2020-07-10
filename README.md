@@ -34,6 +34,9 @@ python3 train-node/train-mnist.py
 
 Moreover, training residual networks with similar structure as the ones above is done by:
 ```bash
+#training large DRCNN for 50 epochs with the given parameters (CELEBA)
+python3 train-res/train-res-celeb.py
+
 #training medium DRCNN for 30 epochs with the given parameters (CIFAR)
 python3 train-res/train-res-cifar-10.py
 
@@ -58,6 +61,7 @@ TO DO:
 1. use the odesolvers as functios or at least experiment with them
 
 View on [trello](https://trello.com/b/0BtjvVZK/neuralode-notes-projects)
+***
 
 ## Contributing
 In case someone would like this, pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
