@@ -127,6 +127,6 @@ customvis('CELEBA-DRCNN', training_acc, testing_acc, training_loss, testing_loss
 
 #############################################################
 
-DRCNN.save_weights('weights/DRCNN-CELEBA-weights.h5')
+DRCNN.save_weights('weights/resweights/DRCNN-CELEBA-weights.h5')
 
 ########################################################################
