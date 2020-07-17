@@ -1,20 +1,16 @@
-##################################################################################################
+###################################################################################################
 
-#Code as from https://github.com/juliagusak/neural-ode-norm/tree/master/anode to get these solvers
+#Code as from https://github.com/juliagusak/neural-ode-norm/tree/master/anode to get these solvers#
 
-##################################################################################################
-
-import abc
+###################################################################################################
 
 class Time_Stepper(object):
-    __metaclass__ = abc.ABCMeta
 
-    def __init__(self, func, y0, Nt = 2 ):
+    def __init__(self, func, y0, Nt = 2):
         self.func = func
         self.Nt = Nt
         self.dt_next = []
 
-    @abc.abstractmethod
     def step(self, func, t, dt, y):
         pass
 
@@ -53,11 +49,9 @@ class RK4(Time_Stepper):
 
 #############################################################
 
-def odesolver(func, z0, options=None):
-    if options is None:
-        Nt = 2
-    else:
-        Nt = options['Nt']
+def odesolver(func, z0, options={'method' : 'Euler', 'Nt' : 2}):
+    Nt = options['Nt']
+    
     if options['method'] == 'Euler':
         solver = Euler(func, z0, Nt=Nt)
     elif options['method'] == 'RK2':
@@ -79,3 +73,12 @@ def odesolver(func, z0, options=None):
     return z1
 
 #############################################################
+
+if __name__ == '__main__':
+    #y_deriv = f(x)
+    def f(t, x):
+        return t * x
+
+    #using the ode solver
+    result = odesolver(f, 3, {'method' : 'Euler', 'Nt' : 2})
+    print(result)

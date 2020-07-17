@@ -27,7 +27,7 @@ class ResBlock(tf.keras.layers.Layer):
         y = K.conv2d(y, self.conv2d_w2, padding="same")
         y = K.bias_add(y, self.conv2d_b2)
         y = K.relu(y)
-        y = y+x
+        y = y + x
 
         return y
 
