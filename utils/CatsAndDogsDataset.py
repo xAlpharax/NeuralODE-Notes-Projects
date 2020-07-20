@@ -50,14 +50,14 @@ class CatsAndDogs:
                 new_lbl[1] = 1.
                 dogslabels.append(new_lbl) # assigning labels for dog imgages
         
-        catsimgs, dogsimgs = np.array(catsimgs), np.array(dogsimgs)
+        catsimgs, dogsimgs = np.array(catsimgs), np.array(dogsimgs) # convert images to numpy arrays
         catslabels, dogslabels = np.array(catslabels), np.array(dogslabels)
 
-        all_images = np.concatenate((catsimgs, dogsimgs))
+        all_images = np.concatenate((catsimgs, dogsimgs)) # merge arrays
         all_labels = np.concatenate((catslabels, dogslabels))
 
         shuff = np.arange(all_images.shape[0])
-        np.random.shuffle(shuff)
+        np.random.shuffle(shuff) # shuffle mask
 
         all_images, all_labels = all_images[shuff], all_labels[shuff]
 
