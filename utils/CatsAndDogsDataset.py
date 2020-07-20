@@ -58,9 +58,10 @@ class CatsAndDogs:
 
         shuff = np.arange(all_images.shape[0])
         np.random.shuffle(shuff) # shuffle mask
-
+        
+        #shuffle complete dataset with set shuffle mask
         all_images, all_labels = all_images[shuff], all_labels[shuff]
-
+        
         return all_images, all_labels
 
 ############################################################
