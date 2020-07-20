@@ -27,28 +27,28 @@ class CatsAndDogs:
             
             with open(image, 'rb') as img:
                 img_arr = Image.open(img)
-                img_arr = img_arr.resize((256, 160)) # 128 80
+                img_arr = img_arr.resize((256, 160)) # opening and resizing the image to 16/10
                 img_arr = np.asarray(img_arr)
                     
-                catsimgs.append(img_arr)
+                catsimgs.append(img_arr) # appending said cat image respective list
                 
                 new_lbl = [0.]*2
                 new_lbl[0] = 1.
-                catslabels.append(new_lbl)
+                catslabels.append(new_lbl) # assigning labels for cat imgages 
 
         print("Loading dog dataset...")
         for image in glob.glob(os.path.join(self.location, 'dogs/*')):
             
             with open(image, 'rb') as img:
                 img_arr = Image.open(img)
-                img_arr = img_arr.resize((256, 160))
+                img_arr = img_arr.resize((256, 160)) # opening and resizing the image to 16/10
                 img_arr = np.asarray(img_arr)
                     
-                dogsimgs.append(img_arr)
+                dogsimgs.append(img_arr) # appending said dog image respective list
                 
                 new_lbl = [0.]*2
                 new_lbl[1] = 1.
-                dogslabels.append(new_lbl)
+                dogslabels.append(new_lbl) # assigning labels for dog imgages
         
         catsimgs, dogsimgs = np.array(catsimgs), np.array(dogsimgs)
         catslabels, dogslabels = np.array(catslabels), np.array(dogslabels)
