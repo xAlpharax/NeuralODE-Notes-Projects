@@ -22,11 +22,11 @@ from google.colab import drive
 drive.mount('/content/NeuralODE-Notes-Projects/drive')
 
 import numpy as np
-x_train = np.load('drive/CatsAndDogsArrays/CatsAndDogs-images.npy')
-x_test = np.load('drive/CatsAndDogsArrays/CatsAndDogs-images-test.npy')
+x_train = np.load('drive/My Drive/CatsAndDogsArrays/CatsAndDogs-images.npy')
+x_test = np.load('drive/My Drive/CatsAndDogsArrays/CatsAndDogs-images-test.npy')
 
-y_train = np.load('drive/CatsAndDogsArrays/CatsAndDogs-labels.npy')
-y_test = np.load('drive/CatsAndDogsArrays/CatsAndDogs-labels-test.npy')
+y_train = np.load('drive/My Drive/CatsAndDogsArrays/CatsAndDogs-labels.npy')
+y_test = np.load('drive/My Drive/CatsAndDogsArrays/CatsAndDogs-labels-test.npy')
 
 #############################################################
 
