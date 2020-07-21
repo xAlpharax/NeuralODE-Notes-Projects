@@ -1,20 +1,32 @@
 #Get CatsAndDogs Dataset
 import sys
 sys.path.append('./')
-from utils.CatsAndDogsDataset import CatsAndDogs
 
-#Train Dataset
-CatsAndDogs = CatsAndDogs()
-train = CatsAndDogs.load()
+# from utils.CatsAndDogsDataset import CatsAndDogs
 
-#Test Dataset
-CatsAndDogs = CatsAndDogs(mode = 'test')
-test = CatsAndDogs.load()
+# #Train Dataset
+# CatsAndDogs = CatsAndDogs()
+# train = CatsAndDogs.load()
 
-total_size = len(train[0])
+# #Test Dataset
+# CatsAndDogs = CatsAndDogs(mode = 'test')
+# test = CatsAndDogs.load()
 
-print("Train Data: {}".format(train[0].shape))
-print("Test Data: {}".format(test[0].shape))
+# total_size = len(train[0])
+
+# print("Train Data: {}".format(train[0].shape))
+# print("Test Data: {}".format(test[0].shape))
+
+#mounting drive folder into dir
+from google.colab import drive
+drive.mount('/content/NeuralODE-Notes-Projects/drive')
+
+import numpy as np
+x_train = np.load('drive/CatsAndDogsArrays/CatsAndDogs-images.npy')
+x_test = np.load('drive/CatsAndDogsArrays/CatsAndDogs-images-test.npy')
+
+y_train = np.load('drive/CatsAndDogsArrays/CatsAndDogs-labels.npy')
+y_test = np.load('drive/CatsAndDogsArrays/CatsAndDogs-labels-test.npy')
 
 #############################################################
 
