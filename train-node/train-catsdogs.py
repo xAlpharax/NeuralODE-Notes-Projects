@@ -28,6 +28,9 @@ x_test = np.load('drive/My Drive/CatsAndDogsArrays/CatsAndDogs-images-test.npy')
 y_train = np.load('drive/My Drive/CatsAndDogsArrays/CatsAndDogs-labels.npy')
 y_test = np.load('drive/My Drive/CatsAndDogsArrays/CatsAndDogs-labels-test.npy')
 
+print("Train Data: {}".format(x_train.shape))
+print("Test Data: {}".format(x_test.shape))
+
 #############################################################
 
 #imports
