@@ -43,18 +43,12 @@ from odeblocktensorflow import ODEBlock
 #largest DCODNN network built
 def DCODNN(input_shape, num_classes):
   x = Input(input_shape)
-  y = Conv2D(64, (5,5), activation='relu')(x)
+  y = Conv2D(256, (5,5), activation='relu')(x)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
   y = Dropout(0.5)(y)
-  
-  y = ODEBlock(64, (5,5))(y)
-  y = BatchNormalization(axis=-1)(y)
-  y = MaxPooling2D(2,2)(y)
-  y = Dropout(0.4)(y)
 
-  y = Conv2D(128, (5,5), activation='relu')(x)
-  y = Conv2D(256, (3,3), activation='relu')(x)
+  y = ODEBlock(256, (5,5))(y)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
   y = Dropout(0.3)(y)
@@ -74,13 +68,14 @@ def DCODNN(input_shape, num_classes):
 
 DCODNN = DCODNN((160, 256, 3), 2)
 
-batch_size = 16
+batch_size = 8
+test_batch = 8
 epochs = 10
 
 training_loss, testing_loss = np.array([[]]), np.array([[]])
 training_acc, testing_acc = np.array([[]]), np.array([[]])
 
-x_test[:16] = (x_test[:16] / 127.5) - 1
+x_test[:test_batch] = (x_test[:test_batch] / 127.5) - 1
 x_test = np.float32(x_test)
 
 total_size = len(x_train)
@@ -130,8 +125,8 @@ for epoch in range(epochs):
   
   epoch_time = int(time.time() - start_epoch_time)
 
-  testing_loss_at_epoch = np.mean(loss_fn(y_test[:16], DCODNN(x_test[:16]).numpy()))
-  _ = metric.update_state(y_test[:16], DCODNN(x_test[:16]).numpy())
+  testing_loss_at_epoch = np.mean(loss_fn(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy()))
+  _ = metric.update_state(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy())
   testing_acc_at_epoch = metric.result().numpy()
 
   training_loss, testing_loss = np.append(training_loss, loss_at_epoch), np.append(testing_loss, testing_loss_at_epoch)
