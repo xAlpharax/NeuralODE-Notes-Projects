@@ -50,7 +50,7 @@ def DCODNN(input_shape, num_classes):
 
 #############################################################
 
-DCODNN = DCODNN((110, 90, 3), 2)
+DCODNN = DCODNN((70, 86, 3), 2) #90x110
 
 batch_size = 512
 epochs = 10
