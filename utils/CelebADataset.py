@@ -26,7 +26,7 @@ class CelebA:
         self.one_hot = one_hot
         self.flatten = flatten
         
-    def load(self, count = 3000, start_index=1, mode = 'L'): #100000
+    def load(self, count = 5000, start_index=1, mode = 'L'): #100000
         
         celeb_img = []
         celeb_label = []
@@ -38,7 +38,7 @@ class CelebA:
             
             with self.zip.open(file, 'r') as img:
                 img_arr = Image.open(img) #misc.imread(img,mode='L')
-                img_arr = img_arr.resize((90, 110)) #misc.imresize(img_arr, (180, 220))
+                img_arr = img_arr.resize((70, 86)) #90x110 #misc.imresize(img_arr, (180, 220))
                 img_arr = np.asarray(img_arr)
                 
                 #flatten image to give flat vector instead of 28*28 matrix
