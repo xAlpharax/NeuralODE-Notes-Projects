@@ -9,7 +9,8 @@ train = celeb.load()
 test = celeb.testSet()
 
 total_size = len(train[0])
-
+print(total_size
+  )
 print("Train Data: {}".format(train[0].shape))
 print("Test Data: {}".format(test[0].shape))
 
@@ -49,7 +50,7 @@ def DCODNN(input_shape, num_classes):
 
 DCODNN = DCODNN((110, 90, 3), 2)
 
-batch_size = 256
+batch_size = 512
 epochs = 30
 
 import numpy as np
