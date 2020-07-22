@@ -66,7 +66,7 @@ def DCODNN(input_shape, num_classes):
 
 #############################################################
 
-DCODNN = DCODNN((160, 256, 3), 2)
+DCODNN = DCODNN((256, 160, 3), 2)
 
 batch_size = 8
 test_batch = 8
