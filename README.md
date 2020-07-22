@@ -22,7 +22,7 @@ pip3 install -qq -r requirements.txt
 
 Training the network created in dcodnn.py can be done by running the following command. Note that the weights and visuals are placed in their separate directories respectively. Furthermore, the celebA dataset and attributes can be downloaded from [img_align_celeba.zip](https://drive.google.com/file/d/0B7EVK8r0v71pZjFTYXZWM3FlRnM/view?usp=sharing) & [list_attr_celeba.txt](https://drive.google.com/file/d/0B7EVK8r0v71pblRyaVFSWGxPY0U/view?usp=sharing) and placed in drive directory.
 ```bash
-#training large DCODNN for 50 epochs with the given parameters (CELEBA)
+#training large DCODNN for 30 epochs with the given parameters (CELEBA)
 python3 train-node/train-celeb.py
 
 #training medium DCODNN for 30 epochs with the given parameters (CIFAR)
@@ -34,7 +34,7 @@ python3 train-node/train-mnist.py
 
 Moreover, training residual networks with similar structure as the ones above is done by:
 ```bash
-#training large DRCNN for 50 epochs with the given parameters (CELEBA)
+#training large DRCNN for 30 epochs with the given parameters (CELEBA)
 python3 train-res/train-res-celeb.py
 
 #training medium DRCNN for 30 epochs with the given parameters (CIFAR)

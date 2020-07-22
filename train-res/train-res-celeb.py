@@ -8,7 +8,7 @@ celeb = CelebA()
 train = celeb.load()
 test = celeb.testSet()
 
-total_size = len(train)
+total_size = len(train[0])
 
 print("Train Data: {}".format(train[0].shape))
 print("Test Data: {}".format(test[0].shape))
@@ -49,8 +49,8 @@ def DRCNN(input_shape, num_classes):
 
 DRCNN = DRCNN((110, 90, 3), 2)
 
-batch_size = 512
-epochs = 50
+batch_size = 64
+epochs = 30
 
 import numpy as np
 training_loss, testing_loss = np.array([[]]), np.array([[]])
