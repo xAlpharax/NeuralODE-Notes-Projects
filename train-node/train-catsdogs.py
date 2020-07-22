@@ -1,6 +1,6 @@
-#Get CatsAndDogs Dataset
-import sys
-sys.path.append('./')
+# #Get CatsAndDogs Dataset
+# import sys
+# sys.path.append('./')
 
 # from utils.CatsAndDogsDataset import CatsAndDogs
 
