@@ -74,7 +74,7 @@ def DCODNN(input_shape, num_classes):
 
 DCODNN = DCODNN((160, 256, 3), 2)
 
-batch_size = 128
+batch_size = 32
 epochs = 10
 
 training_loss, testing_loss = np.array([[]]), np.array([[]])
@@ -130,8 +130,8 @@ for epoch in range(epochs):
   
   epoch_time = int(time.time() - start_epoch_time)
 
-  testing_loss_at_epoch = np.mean(loss_fn(y_test[:100], DCODNN(x_test[:100]).numpy()))
-  _ = metric.update_state(y_test[:100], DCODNN(x_test[:100]).numpy())
+  testing_loss_at_epoch = np.mean(loss_fn(y_test[:32], DCODNN(x_test[:32]).numpy()))
+  _ = metric.update_state(y_test[:32], DCODNN(x_test[:32]).numpy())
   testing_acc_at_epoch = metric.result().numpy()
 
   training_loss, testing_loss = np.append(training_loss, loss_at_epoch), np.append(testing_loss, testing_loss_at_epoch)
