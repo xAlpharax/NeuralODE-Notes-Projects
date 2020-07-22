@@ -49,7 +49,7 @@ def DCODNN(input_shape, num_classes):
 
 DCODNN = DCODNN((110, 90, 3), 2)
 
-batch_size = 64
+batch_size = 256
 epochs = 30
 
 import numpy as np
