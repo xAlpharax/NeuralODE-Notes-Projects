@@ -50,7 +50,7 @@ def DCODNN(input_shape, num_classes):
 
 #############################################################
 
-DCODNN = DCODNN((70, 86, 3), 2) #90x110
+DCODNN = DCODNN((90, 110, 3), 2)
 
 batch_size = 512
 epochs = 10
@@ -72,7 +72,7 @@ y_test = test[1]
 
 import tensorflow as tf
 
-optimizer = tf.keras.optimizers.Adadelta(7e-2) # Adadelta optimizer
+optimizer = tf.keras.optimizers.Adadelta(1e-1) # Adadelta optimizer
 loss_fn = tf.keras.losses.CategoricalCrossentropy() # Categorical Loss for categorical labels
 metric = tf.keras.metrics.CategoricalAccuracy() # Categorical Accuracy
 
