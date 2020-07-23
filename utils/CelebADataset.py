@@ -32,7 +32,7 @@ class CelebA:
         celeb_label = []
         end_index = start_index + count
 
-        print("Loading dataset...")             
+        print("Loading dataset...")
         
         for index, file in enumerate(self.filelist[start_index : end_index], start= start_index):
             
@@ -48,7 +48,7 @@ class CelebA:
                 celeb_img.append(img_arr)
                 
 
-        print("Loading labels...\n")             
+        print("Loading labels...\n")
         for index in range(start_index - 1, end_index - 1):
             new_lbl = [0]*2
             if self.one_hot == True:
