@@ -25,7 +25,7 @@ from odeblocktensorflow import ODEBlock
 
 def DCODNN(input_shape, num_classes):
   x = Input(input_shape)
-  y = Conv2D(64, (5,5), activation='relu')(x)
+  y = Conv2D(32, (5,5), activation='relu')(x)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
   y = Dropout(0.3)(y)
@@ -51,8 +51,8 @@ def DCODNN(input_shape, num_classes):
 
 DCODNN = DCODNN((90, 110, 3), 2)
 
-batch_size = 256
-epochs = 10
+batch_size = 512
+epochs = 15
 
 import numpy as np
 training_loss, testing_loss = np.array([[]]), np.array([[]])
@@ -71,7 +71,7 @@ y_test = test[1]
 
 import tensorflow as tf
 
-optimizer = tf.keras.optimizers.Adadelta(1e-2) # Adadelta optimizer #1e-2
+optimizer = tf.keras.optimizers.Adadelta(5e-2) # Adadelta optimizer #1e-2
 loss_fn = tf.keras.losses.CategoricalCrossentropy() # Categorical Loss for categorical labels
 metric = tf.keras.metrics.CategoricalAccuracy() # Categorical Accuracy
 
