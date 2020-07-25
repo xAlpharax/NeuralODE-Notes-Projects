@@ -1,6 +1,6 @@
 ###################################################################################################
 
-#Code as from https://github.com/juliagusak/neural-ode-norm/tree/master/anode to get these solvers#
+#             Code as from https://github.com/amirgholami/anode to get these solvers              #
 
 ###################################################################################################
 
