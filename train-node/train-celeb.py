@@ -90,7 +90,7 @@ def trainfn(model, inputs, labels):
 import time
 
 ## TRAINING CUSTOM DCODNN ###
-print("Initialize Training")
+
 for epoch in range(epochs):
   start_epoch_time = time.time()
 
