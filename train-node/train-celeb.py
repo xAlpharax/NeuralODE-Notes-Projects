@@ -73,7 +73,7 @@ y_test = test[1]
 
 import tensorflow as tf
 
-optimizer = tf.keras.optimizers.Adadelta(6e-2) # Adadelta optimizer #1e-2
+optimizer = tf.keras.optimizers.Adadelta(7e-2) # Adadelta optimizer #1e-2
 loss_fn = tf.keras.losses.CategoricalCrossentropy() # Categorical Loss for categorical labels
 metric = tf.keras.metrics.CategoricalAccuracy() # Categorical Accuracy
 
