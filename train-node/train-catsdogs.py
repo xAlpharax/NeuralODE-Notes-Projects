@@ -125,16 +125,17 @@ for epoch in range(epochs):
     inputs = np.float32(inputs)
 
     trainfn(DCODNN, inputs, labels)
+    print("Finished Batch")
 
-    _ = metric.update_state(labels, DCODNN(inputs).numpy())
-    acc_at_epoch = metric.result().numpy()
-    loss_at_epoch = np.mean(loss_fn(labels, DCODNN(inputs).numpy()))
-  
-  epoch_time = int(time.time() - start_epoch_time)
+  _ = metric.update_state(labels, DCODNN(inputs).numpy())
+  acc_at_epoch = metric.result().numpy()
+  loss_at_epoch = np.mean(loss_fn(labels, DCODNN(inputs).numpy()))
 
-  testing_loss_at_epoch = np.mean(loss_fn(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy()))
   _ = metric.update_state(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy())
   testing_acc_at_epoch = metric.result().numpy()
+  testing_loss_at_epoch = np.mean(loss_fn(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy()))
+
+  epoch_time = int(time.time() - start_epoch_time)
 
   training_loss, testing_loss = np.append(training_loss, loss_at_epoch), np.append(testing_loss, testing_loss_at_epoch)
   training_acc, testing_acc = np.append(training_acc, acc_at_epoch), np.append(testing_acc, testing_acc_at_epoch)
