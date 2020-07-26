@@ -46,7 +46,7 @@ def DCODNN(input_shape, num_classes):
   y = Conv2D(32, (3,3), activation='relu')(x)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
-  y = Dropout(0.5)(y)
+  y = Dropout(0.3)(y)
 
   y = Conv2D(64, (3,3), activation='relu')(y)
   y = BatchNormalization(axis=-1)(y)
@@ -91,7 +91,7 @@ total_size = len(x_train)
 
 import tensorflow as tf
 
-optimizer = tf.keras.optimizers.Adadelta(5e-3) # Adadelta optimizer
+optimizer = tf.keras.optimizers.Adadelta(3e-3) # Adadelta optimizer
 loss_fn = tf.keras.losses.CategoricalCrossentropy() # Categorical Loss for categorical labels
 metric = tf.keras.metrics.CategoricalAccuracy() # Categorical Accuracy
 
