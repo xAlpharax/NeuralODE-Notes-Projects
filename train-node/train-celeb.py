@@ -45,8 +45,8 @@ def DCODNN(input_shape, num_classes):
   y = Dropout(0.2)(y)
   
   y = Flatten()(y)
-  y = Dense(512, activation='sigmoid')(y)
-  # y = Dense(256, activation='sigmoid')(y)
+  y = Dense(512, activation='relu')(y)
+  y = Dense(256, activation='sigmoid')(y)
   y = Dropout(0.1)(y)
   y = Dense(num_classes, activation='softmax')(y)
   return Model(x,y)
