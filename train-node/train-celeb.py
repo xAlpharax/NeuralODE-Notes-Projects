@@ -46,7 +46,7 @@ def DCODNN(input_shape, num_classes):
   
   y = Flatten()(y)
   y = Dense(512, activation='sigmoid')(y)
-  y = Dense(256, activation='sigmoid')(y)
+  # y = Dense(256, activation='sigmoid')(y)
   y = Dropout(0.1)(y)
   y = Dense(num_classes, activation='softmax')(y)
   return Model(x,y)
@@ -75,7 +75,7 @@ y_test = test[1]
 
 import tensorflow as tf
 
-optimizer = tf.keras.optimizers.Adadelta(3e-2) # Adadelta optimizer #1e-2
+optimizer = tf.keras.optimizers.Adadelta(5e-2) # Adadelta optimizer #1e-2
 loss_fn = tf.keras.losses.CategoricalCrossentropy() # Categorical Loss for categorical labels
 metric = tf.keras.metrics.CategoricalAccuracy() # Categorical Accuracy
 
