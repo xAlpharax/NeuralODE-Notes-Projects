@@ -33,6 +33,11 @@ print("Test Data: {}".format(x_test.shape))
 
 #############################################################
 
+import sys
+sys.path.append('./')
+
+###################################################################
+
 #imports
 from tensorflow.keras.layers import Input, Conv2D, BatchNormalization, MaxPooling2D, Dense, Flatten, Dropout
 from tensorflow.keras.models import Model
@@ -65,7 +70,7 @@ def DCODNN(input_shape, num_classes):
   
   y = Flatten()(y)
 
-  y = Dense(1024, activation='sigmoid')(y)
+  y = Dense(1024, activation='relu')(y)
   y = Dense(512, activation='sigmoid')(y)
   y = Dropout(0.1)(y)
   y = Dense(num_classes, activation='softmax')(y)
