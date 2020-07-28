@@ -51,8 +51,8 @@ def DCODNN(input_shape, num_classes):
   y = Conv2D(64, (3,3), activation='relu')(y)
   y = BatchNormalization(axis=-1)(y)
 
-  y = Conv2D(128, (3,3), activation='relu')(y)
-  y = BatchNormalization(axis=-1)(y)
+  y = Conv2D(256, (3,3), activation='relu')(y)
+  # y = BatchNormalization(axis=-1)(y)
   y = Conv2D(256, (3,3), activation='relu')(y)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
