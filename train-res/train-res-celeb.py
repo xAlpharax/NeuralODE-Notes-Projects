@@ -1,3 +1,5 @@
+#############################################
+
 #Get CelebA Dataset
 import sys
 sys.path.append('./')
@@ -9,6 +11,7 @@ train = celeb.load()
 test = celeb.testSet()
 
 total_size = len(train[0])
+# print(total_size)
 
 print("Train Data: {}".format(train[0].shape))
 print("Test Data: {}".format(test[0].shape))
@@ -24,33 +27,35 @@ from resblocktensorflow import ResBlock
 
 def DRCNN(input_shape, num_classes):
   x = Input(input_shape)
-  y = Conv2D(64, (5,5), activation='relu')(x)
+  y = Conv2D(32, (3,3), activation='relu')(x)
+  y = BatchNormalization(axis=-1)(y)
+  y = MaxPooling2D(2,2)(y)
+  y = Dropout(0.3)(y)
+
+  y = Conv2D(128, (3,3), activation='relu')(y)
+  y = Conv2D(128, (3,3), activation='relu')(y)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
   y = Dropout(0.3)(y)
   
-  y = Conv2D(128, (5,5), activation='relu')(y)
-  y = Conv2D(256, (5,5), activation='relu')(y)
+  y = ResBlock(128, (3,3))(y)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
   y = Dropout(0.2)(y)
   
-  y = ResBlock(256, (3,3))(y)
-  y = BatchNormalization(axis=-1)(y)
-  y = MaxPooling2D(2,2)(y)
-  y = Dropout(0.1)(y)
-  
   y = Flatten()(y)
-  y = Dense(1024, activation='sigmoid')(y)
+  y = Dense(512, activation='relu')(y)
+  y = Dense(256, activation='sigmoid')(y)
+  y = Dropout(0.1)(y)
   y = Dense(num_classes, activation='softmax')(y)
   return Model(x,y)
 
 #############################################################
 
-DRCNN = DRCNN((110, 90, 3), 2)
+DRCNN = DRCNN((90, 110, 3), 2)
 
-batch_size = 64
-epochs = 30
+batch_size = 256
+epochs = 15
 
 import numpy as np
 training_loss, testing_loss = np.array([[]]), np.array([[]])
@@ -69,7 +74,7 @@ y_test = test[1]
 
 import tensorflow as tf
 
-optimizer = tf.keras.optimizers.Adadelta(3e-2) # Adadelta optimizer
+optimizer = tf.keras.optimizers.Adadelta(5e-2) # Adadelta optimizer
 loss_fn = tf.keras.losses.CategoricalCrossentropy() # Categorical Loss for categorical labels
 metric = tf.keras.metrics.CategoricalAccuracy() # Categorical Accuracy
 
@@ -93,7 +98,6 @@ for epoch in range(epochs):
 
   for index in range(0, total_size, batch_size):
     end_index = total_size if index + batch_size > total_size else index + batch_size
-
     inputs = x_train[index:end_index] # Slicing operation
     labels = y_train[index:end_index] # Slicing operation
     #print(inputs.shape)
@@ -103,16 +107,16 @@ for epoch in range(epochs):
     inputs = np.float32(inputs)
 
     trainfn(DRCNN, inputs, labels)
-
-    _ = metric.update_state(labels, DRCNN(inputs).numpy())
-    acc_at_epoch = metric.result().numpy()
-    loss_at_epoch = np.mean(loss_fn(labels, DRCNN(inputs).numpy()))
+    print("Finished Batch")
+    
+  _ = metric.update_state(labels, DRCNN(inputs).numpy())
+  acc_at_epoch = metric.result().numpy()
+  loss_at_epoch = np.mean(loss_fn(labels, DRCNN(inputs).numpy()))
   
   epoch_time = int(time.time() - start_epoch_time)
-  # loss_at_epoch = loss_fn(labels, DRCNN(inputs).numpy())
 
-  testing_loss_at_epoch = np.mean(loss_fn(y_test[:3], DRCNN(x_test[:3]).numpy()))
-  _ = metric.update_state(y_test[:3], DRCNN(x_test[:3]).numpy())
+  testing_loss_at_epoch = np.mean(loss_fn(y_test[:10], DRCNN(x_test[:10]).numpy()))
+  _ = metric.update_state(y_test[:10], DRCNN(x_test[:10]).numpy())
   testing_acc_at_epoch = metric.result().numpy()
 
   training_loss, testing_loss = np.append(training_loss, loss_at_epoch), np.append(testing_loss, testing_loss_at_epoch)
