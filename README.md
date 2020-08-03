@@ -60,7 +60,8 @@ CelebA weights are large files(~100MB) and so would slow down the repository. Do
 
 ***
 TO DO:
-1. catsVSdogs dataset node & resnet
+1. celeb drcnn and visuals
+2. catsVSdogs dataset node & resnet
 
 View on [trello](https://trello.com/b/0BtjvVZK/neuralode-notes-projects)
 ***
