@@ -56,7 +56,7 @@ In regards to interractive training, there is a [Colab Notebook](https://colab.r
 ![CelebA Accuracy](assets/celebvisuals/CELEBA-DCODNN-15-Accuracy.svg)
 
 ## Additional weights
-CelebA weights are large files(~30MB) and so would slow down the repository. Download from [drive](https://drive.google.com/drive/folders/1Rxa4Obpkz_5gmlW2gmFwnYa9GtLBkYDc?usp=sharing) Here you can also find the fine-tuned DCODNN trained on more epochs and smaller learning rate(5e-3)
+CelebA weights are large files(~30MB) and so would slow down the repository. Download from [drive](https://drive.google.com/drive/folders/1Rxa4Obpkz_5gmlW2gmFwnYa9GtLBkYDc?usp=sharing). Here you can also find the fine-tuned DCODNN trained on more epochs and smaller learning rate(5e-3)
 
 ***
 TO DO:
