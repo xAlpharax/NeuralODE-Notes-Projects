@@ -1,6 +1,6 @@
 # Neural Ordinary Differential Equations
 
- Repository for notes, projects and snippets on NODEs. Includes results after training CNN based networks with different methods on MNIST, CIFAR-10 and CelebA datasets accordingly.
+ Repository for notes, projects and snippets on NODEs. Includes results after training CNN based networks with different methods on MNIST, CIFAR-10, CelebA and CatsAndDogs datasets accordingly.
 
 ## Introduction
 
@@ -50,18 +50,17 @@ In regards to interractive training, there is a [Colab Notebook](https://colab.r
 
 |             | CELEBA               | CIFAR               | MNIST               |
 | ----------- |:--------------------:|:-------------------:| ------------------- |
-| DCODNN      | val_acc: 0.7596      | val_acc: 0.7059     | **val_acc: 0.9865** | 
+| DCODNN      | **val_acc: 0.8284**  | val_acc: 0.7059     | **val_acc: 0.9865** | 
 | DRCNN       | val_acc: 0.7759      | **val_acc: 0.7545** | val_acc: 0.9824     |
 
-![CelebA Accuracy](assets/celebvisuals/CELEBA-DCODNN-Accuracy.svg)
+![CelebA Accuracy](assets/celebvisuals/CELEBA-DCODNN-15-Accuracy.svg)
 
 ## Additional weights
-CelebA weights are large files(~100MB) and so would slow down the repository. Download from [drive](https://drive.google.com/drive/folders/1Rxa4Obpkz_5gmlW2gmFwnYa9GtLBkYDc?usp=sharing)
+CelebA weights are large files(~30MB) and so would slow down the repository. Download from [drive](https://drive.google.com/drive/folders/1Rxa4Obpkz_5gmlW2gmFwnYa9GtLBkYDc?usp=sharing) Here you can also find the fine-tuned DCODNN trained on more epochs and smaller learning rate(5e-3)
 
 ***
 TO DO:
-1. celeb drcnn and visuals
-2. catsVSdogs dataset node & resnet
+1. catsVSdogs dataset node & resnet
 
 View on [trello](https://trello.com/b/0BtjvVZK/neuralode-notes-projects)
 ***
