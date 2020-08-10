@@ -84,7 +84,7 @@ metric = tf.keras.metrics.CategoricalAccuracy() # Categorical Accuracy
 def trainfn(model, inputs, labels):
   with tf.GradientTape() as tape:
     # Computing Losses from Model Prediction
-    loss = loss_fn(labels, model(inputs))
+    loss = loss_fn(labels, model(inputs, training=True))
 
   gradients = tape.gradient(loss, model.trainable_variables) # Gradients for Trainable Variables with Obtained Losses
   optimizer.apply_gradients(zip(gradients, model.trainable_variables)) # Updated weights
@@ -115,8 +115,8 @@ for epoch in range(epochs):
   acc_at_epoch = metric.result().numpy()
   loss_at_epoch = np.mean(loss_fn(labels, DCODNN(inputs).numpy()))
   
-  testing_loss_at_epoch = np.mean(loss_fn(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy()))
-  _ = metric.update_state(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy())
+  testing_loss_at_epoch = np.mean(loss_fn(y_test[:test_batch], DCODNN(x_test[:test_batch], training=False).numpy()))
+  _ = metric.update_state(y_test[:test_batch], DCODNN(x_test[:test_batch], training=False).numpy())
   testing_acc_at_epoch = metric.result().numpy()
 
   epoch_time = int(time.time() - start_epoch_time)
