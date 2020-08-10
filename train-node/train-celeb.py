@@ -84,7 +84,7 @@ metric = tf.keras.metrics.CategoricalAccuracy() # Categorical Accuracy
 def trainfn(model, inputs, labels):
   with tf.GradientTape() as tape:
     # Computing Losses from Model Prediction
-    loss = loss_fn(labels, model(inputs, training=True))
+    loss = loss_fn(labels, model(inputs))
 
   gradients = tape.gradient(loss, model.trainable_variables) # Gradients for Trainable Variables with Obtained Losses
   optimizer.apply_gradients(zip(gradients, model.trainable_variables)) # Updated weights
