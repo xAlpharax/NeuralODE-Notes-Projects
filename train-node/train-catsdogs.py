@@ -17,7 +17,7 @@
 # print("Train Data: {}".format(train[0].shape))
 # print("Test Data: {}".format(test[0].shape))
 
-#mounting drive folder into dir
+#mounting drive into dir
 from google.colab import drive
 drive.mount('/content/NeuralODE-Notes-Projects/drive')
 
@@ -91,6 +91,7 @@ x_test[:test_batch] = (x_test[:test_batch] / 127.5) - 1
 x_test = np.float32(x_test)
 
 total_size = len(x_train)
+total_test_size = len(x_test)
 
 ######################################################
 
