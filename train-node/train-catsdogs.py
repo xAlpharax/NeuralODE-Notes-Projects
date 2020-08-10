@@ -5,14 +5,10 @@
 # from utils.CatsAndDogsDataset import CatsAndDogs
 
 # #Train Dataset
-# CatsAndDogs = CatsAndDogs()
-# train = CatsAndDogs.load()
+# train = CatsAndDogs(mode = 'train').load()
 
 # #Test Dataset
-# CatsAndDogs = CatsAndDogs(mode = 'test')
-# test = CatsAndDogs.load()
-
-# total_size = len(train[0])
+# test = CatsAndDogs(mode = 'test').load()
 
 # print("Train Data: {}".format(train[0].shape))
 # print("Test Data: {}".format(test[0].shape))
