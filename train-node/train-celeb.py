@@ -56,6 +56,7 @@ def DCODNN(input_shape, num_classes):
 DCODNN = DCODNN((90, 110, 3), 2)
 
 batch_size = 256
+test_batch = 128
 epochs = 15
 
 import numpy as np
@@ -75,7 +76,7 @@ y_test = test[1]
 
 import tensorflow as tf
 
-optimizer = tf.keras.optimizers.Adadelta(5e-2) # Adadelta optimizer #1e-2
+optimizer = tf.keras.optimizers.Adadelta(5e-2) # Adadelta optimizer
 loss_fn = tf.keras.losses.CategoricalCrossentropy() # Categorical Loss for categorical labels
 metric = tf.keras.metrics.CategoricalAccuracy() # Categorical Accuracy
 
@@ -114,15 +115,15 @@ for epoch in range(epochs):
   acc_at_epoch = metric.result().numpy()
   loss_at_epoch = np.mean(loss_fn(labels, DCODNN(inputs).numpy()))
   
-  epoch_time = int(time.time() - start_epoch_time)
-
-  testing_loss_at_epoch = np.mean(loss_fn(y_test[:10], DCODNN(x_test[:10]).numpy()))
-  _ = metric.update_state(y_test[:10], DCODNN(x_test[:10]).numpy())
+  testing_loss_at_epoch = np.mean(loss_fn(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy()))
+  _ = metric.update_state(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy())
   testing_acc_at_epoch = metric.result().numpy()
+
+  epoch_time = int(time.time() - start_epoch_time)
 
   training_loss, testing_loss = np.append(training_loss, loss_at_epoch), np.append(testing_loss, testing_loss_at_epoch)
   training_acc, testing_acc = np.append(training_acc, acc_at_epoch), np.append(testing_acc, testing_acc_at_epoch)
-  print("Finished epoch: {:02d} with loss: {:.10f} acc: {:.4f} and time taken: {:03d}s".format(epoch+1, loss_at_epoch, acc_at_epoch, epoch_time))
+  print("Finished epoch: {:02d} with loss: {:.10f} acc: {:.4f} val_acc: {:.4f} and time taken: {:03d}s".format(epoch+1, loss_at_epoch, acc_at_epoch, testing_acc_at_epoch, epoch_time))
 
 #############################################################################################
 

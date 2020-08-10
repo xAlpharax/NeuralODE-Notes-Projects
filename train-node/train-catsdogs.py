@@ -136,9 +136,9 @@ for epoch in range(epochs):
   acc_at_epoch = metric.result().numpy()
   loss_at_epoch = np.mean(loss_fn(labels, DCODNN(inputs).numpy()))
 
+  testing_loss_at_epoch = np.mean(loss_fn(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy()))
   _ = metric.update_state(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy())
   testing_acc_at_epoch = metric.result().numpy()
-  testing_loss_at_epoch = np.mean(loss_fn(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy()))
 
   epoch_time = int(time.time() - start_epoch_time)
 

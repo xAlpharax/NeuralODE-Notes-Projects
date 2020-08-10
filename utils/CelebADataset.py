@@ -26,7 +26,7 @@ class CelebA:
         self.one_hot = one_hot
         self.flatten = flatten
         
-    def load(self, count = 7500, start_index=1, mode = 'L'): #100000
+    def load(self, count = 10000, start_index=1, mode = 'L'): #100000
         
         celeb_img = []
         celeb_label = []
@@ -72,6 +72,6 @@ class CelebA:
     
     
     def testSet(self):
-        return self.load(count = 100, start_index = self.test_index)
+        return self.load(count = 500, start_index = self.test_index)
 
 ########################################################################################
