@@ -55,6 +55,7 @@ def DRCNN(input_shape, num_classes):
 DRCNN = DRCNN((90, 110, 3), 2)
 
 batch_size = 256
+test_batch = 128
 epochs = 15
 
 import numpy as np
@@ -91,13 +92,14 @@ def trainfn(model, inputs, labels):
 
 import time
 
-## TRAINING CUSTOM DRCNN ###
+## TRAINING CUSTOM DCODNN ###
 
 for epoch in range(epochs):
   start_epoch_time = time.time()
 
   for index in range(0, total_size, batch_size):
     end_index = total_size if index + batch_size > total_size else index + batch_size
+    
     inputs = x_train[index:end_index] # Slicing operation
     labels = y_train[index:end_index] # Slicing operation
     #print(inputs.shape)
@@ -113,15 +115,15 @@ for epoch in range(epochs):
   acc_at_epoch = metric.result().numpy()
   loss_at_epoch = np.mean(loss_fn(labels, DRCNN(inputs).numpy()))
   
-  epoch_time = int(time.time() - start_epoch_time)
-
-  testing_loss_at_epoch = np.mean(loss_fn(y_test[:10], DRCNN(x_test[:10]).numpy()))
-  _ = metric.update_state(y_test[:10], DRCNN(x_test[:10]).numpy())
+  testing_loss_at_epoch = np.mean(loss_fn(y_test[:test_batch], DRCNN(x_test[:test_batch]).numpy()))
+  _ = metric.update_state(y_test[:test_batch], DRCNN(x_test[:test_batch]).numpy())
   testing_acc_at_epoch = metric.result().numpy()
+
+  epoch_time = int(time.time() - start_epoch_time)
 
   training_loss, testing_loss = np.append(training_loss, loss_at_epoch), np.append(testing_loss, testing_loss_at_epoch)
   training_acc, testing_acc = np.append(training_acc, acc_at_epoch), np.append(testing_acc, testing_acc_at_epoch)
-  print("Finished epoch: {:02d} with loss: {:.10f} acc: {:.4f} and time taken: {:03d}s".format(epoch+1, loss_at_epoch, acc_at_epoch, epoch_time))
+  print("Finished epoch: {:02d} with loss: {:.10f} acc: {:.4f} val_acc: {:.4f} and time taken: {:03d}s".format(epoch+1, loss_at_epoch, acc_at_epoch, testing_acc_at_epoch, epoch_time))
 
 #############################################################################################
 
