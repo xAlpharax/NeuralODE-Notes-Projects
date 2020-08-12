@@ -141,7 +141,7 @@ for epoch in range(epochs):
 
   training_loss, testing_loss = np.append(training_loss, loss_at_epoch), np.append(testing_loss, testing_loss_at_epoch)
   training_acc, testing_acc = np.append(training_acc, acc_at_epoch), np.append(testing_acc, testing_acc_at_epoch)
-  print("Finished epoch: {:02d} with loss: {:.10f} acc: {:.4f} and time taken: {:03d}s".format(epoch+1, loss_at_epoch, acc_at_epoch, epoch_time))
+  print("Finished epoch: {:02d} with loss: {:.10f} acc: {:.4f} val_acc: {:.4f} and time taken: {:03d}s".format(epoch+1, loss_at_epoch, acc_at_epoch, testing_acc_at_epoch, epoch_time))
 
 #############################################################################################
 

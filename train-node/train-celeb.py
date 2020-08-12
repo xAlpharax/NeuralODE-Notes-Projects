@@ -100,6 +100,7 @@ for epoch in range(epochs):
 
   for index in range(0, total_size, batch_size):
     end_index = total_size if index + batch_size > total_size else index + batch_size
+    
     inputs = x_train[index:end_index] # Slicing operation
     labels = y_train[index:end_index] # Slicing operation
     #print(inputs.shape)
@@ -115,8 +116,8 @@ for epoch in range(epochs):
   acc_at_epoch = metric.result().numpy()
   loss_at_epoch = np.mean(loss_fn(labels, DCODNN(inputs).numpy()))
   
-  testing_loss_at_epoch = np.mean(loss_fn(y_test[:test_batch], DCODNN(x_test[:test_batch], training=False).numpy()))
-  _ = metric.update_state(y_test[:test_batch], DCODNN(x_test[:test_batch], training=False).numpy())
+  testing_loss_at_epoch = np.mean(loss_fn(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy()))
+  _ = metric.update_state(y_test[:test_batch], DCODNN(x_test[:test_batch]).numpy())
   testing_acc_at_epoch = metric.result().numpy()
 
   epoch_time = int(time.time() - start_epoch_time)
