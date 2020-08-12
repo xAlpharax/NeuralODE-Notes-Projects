@@ -86,6 +86,8 @@ training_acc, testing_acc = np.array([[]]), np.array([[]])
 x_test[:test_batch] = (x_test[:test_batch] / 127.5) - 1
 x_test = np.float32(x_test)
 
+x_train, y_train = x_train[:512], y_train[:512]
+
 total_size = len(x_train)
 total_test_size = len(x_test)
 
