@@ -68,7 +68,7 @@ def DCODNN(input_shape, num_classes):
   y = Flatten()(y)
 
   y = Dense(1024, activation='relu')(y)
-  y = Dense(512, activation='sigmoid')(y)
+  y = Dense(512, activation='relu')(y)
   y = Dropout(0.1)(y)
   y = Dense(num_classes, activation='softmax')(y)
   return Model(x,y)
@@ -77,8 +77,8 @@ def DCODNN(input_shape, num_classes):
 
 DCODNN = DCODNN((256, 160, 3), 2)
 
-batch_size = 128
-test_batch = 128
+batch_size = 64
+test_batch = 64
 epochs = 10
 
 training_loss, testing_loss = np.array([[]]), np.array([[]])
