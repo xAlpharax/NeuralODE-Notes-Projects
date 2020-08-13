@@ -44,21 +44,22 @@ from odeblocktensorflow import ODEBlock
 #largest DCODNN network built
 def DCODNN(input_shape, num_classes):
   x = Input(input_shape)
-  y = Conv2D(32, (3,3), activation='relu')(x)
+  y = Conv2D(16, (3,3), activation='relu')(x)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
   y = Dropout(0.3)(y)
 
-  y = Conv2D(64, (3,3), activation='relu')(y)
+  y = Conv2D(32, (3,3), activation='relu')(x)
   y = BatchNormalization(axis=-1)(y)
 
-  y = Conv2D(256, (3,3), activation='relu')(y)
+  y = Conv2D(128, (3,3), activation='relu')(y)
   # y = BatchNormalization(axis=-1)(y)
-  y = Conv2D(256, (3,3), activation='relu')(y)
+  y = Conv2D(128, (3,3), activation='relu')(y)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
   y = Dropout(0.3)(y)
   
+  y = Conv2D(256, (1,1), activation='relu')(y)
   y = ODEBlock(256, (3,3))(y)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
@@ -76,8 +77,8 @@ def DCODNN(input_shape, num_classes):
 
 DCODNN = DCODNN((256, 160, 3), 2)
 
-batch_size = 64
-test_batch = 64
+batch_size = 128
+test_batch = 128
 epochs = 10
 
 training_loss, testing_loss = np.array([[]]), np.array([[]])
@@ -93,7 +94,7 @@ total_test_size = len(x_test)
 
 import tensorflow as tf
 
-optimizer = tf.keras.optimizers.Adadelta(3e-3) # Adadelta optimizer
+optimizer = tf.keras.optimizers.Adadelta(1e-2) # Adadelta optimizer
 loss_fn = tf.keras.losses.CategoricalCrossentropy() # Categorical Loss for categorical labels
 metric = tf.keras.metrics.CategoricalAccuracy() # Categorical Accuracy
 
