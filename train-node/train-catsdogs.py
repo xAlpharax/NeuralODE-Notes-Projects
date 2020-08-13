@@ -77,8 +77,8 @@ def DCODNN(input_shape, num_classes):
 
 DCODNN = DCODNN((256, 160, 3), 2)
 
-batch_size = 64
-test_batch = 64
+batch_size = 32
+test_batch = 32
 epochs = 10
 
 training_loss, testing_loss = np.array([[]]), np.array([[]])
