@@ -58,27 +58,27 @@ def DCODNN(input_shape, num_classes):
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
   y = Dropout(0.3)(y)
-  
+
   y = Conv2D(256, (1,1), activation='relu')(y)
   y = ODEBlock(256, (3,3))(y)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
   y = Dropout(0.2)(y)
-  
+
   y = Flatten()(y)
 
   y = Dense(1024, activation='relu')(y)
-  y = Dense(512, activation='relu')(y)
+  y = Dense(512, activation='sigmoid')(y)
   y = Dropout(0.1)(y)
   y = Dense(num_classes, activation='softmax')(y)
   return Model(x,y)
 
 #############################################################
 
-DCODNN = DCODNN((256, 160, 3), 2)
+DCODNN = DCODNN((128, 80, 3), 2)
 
-batch_size = 32
-test_batch = 32
+batch_size = 256
+test_batch = 256
 epochs = 10
 
 training_loss, testing_loss = np.array([[]]), np.array([[]])

@@ -27,7 +27,7 @@ class CatsAndDogs:
             
             with open(image, 'rb') as img:
                 img_arr = Image.open(img)
-                img_arr = img_arr.resize((256, 160)) # opening and resizing the image to 16/10
+                img_arr = img_arr.resize((128, 80)) # opening and resizing the image to 16/10   #(256, 160)
                 img_arr = np.asarray(img_arr)
                     
                 catsimgs.append(img_arr) # appending said cat image respective list
@@ -41,7 +41,7 @@ class CatsAndDogs:
             
             with open(image, 'rb') as img:
                 img_arr = Image.open(img)
-                img_arr = img_arr.resize((256, 160)) # opening and resizing the image to 16/10
+                img_arr = img_arr.resize((128, 80)) # opening and resizing the image to 16/10
                 img_arr = np.asarray(img_arr)
                     
                 dogsimgs.append(img_arr) # appending said dog image respective list
