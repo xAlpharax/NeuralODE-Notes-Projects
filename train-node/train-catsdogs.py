@@ -44,13 +44,15 @@ from odeblocktensorflow import ODEBlock
 #largest DCODNN network built
 def DCODNN(input_shape, num_classes):
   x = Input(input_shape)
-  y = Conv2D(32, (3,3), activation='relu')(x) #16
+  y = Conv2D(16, (3,3), activation='relu')(x)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
   y = Dropout(0.3)(y)
 
-  # y = Conv2D(32, (3,3), activation='relu')(x)
-  # y = BatchNormalization(axis=-1)(y)
+  y = Conv2D(32, (3,3), activation='relu')(x)
+  y = BatchNormalization(axis=-1)(y)
+  # y = MaxPooling2D(2,2)(y)
+  # y = Dropout(0.3)(y)
 
   y = Conv2D(128, (3,3), activation='relu')(y)
   # y = BatchNormalization(axis=-1)(y)
@@ -77,8 +79,8 @@ def DCODNN(input_shape, num_classes):
 
 DCODNN = DCODNN((128, 80, 3), 2)
 
-batch_size = 64
-test_batch = 64
+batch_size = 256
+test_batch = 256
 epochs = 10
 
 training_loss, testing_loss = np.array([[]]), np.array([[]])
