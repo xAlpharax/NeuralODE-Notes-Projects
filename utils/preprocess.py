@@ -26,7 +26,7 @@ def preprocessceleb(img_path):
 def preprocessCatsAndDogs(img_path):
     img_arr = Image.open(img_path)
     img_arr = img_arr.convert('RGB')
-    img_arr = img_arr.resize((256, 160))
+    img_arr = img_arr.resize((128, 80)) # (256, 160)
 
     # Preprocessing the image
     img_arr = np.asarray(img_arr)

@@ -41,7 +41,7 @@ from odeblocktensorflow import ODEBlock
 
 ######################################################
 
-#largest DCODNN network built
+#largest DCODNN network
 def DCODNN(input_shape, num_classes):
   x = Input(input_shape)
   y = Conv2D(16, (3,3), activation='relu')(x)
@@ -51,11 +51,10 @@ def DCODNN(input_shape, num_classes):
 
   y = Conv2D(32, (3,3), activation='relu')(x)
   y = BatchNormalization(axis=-1)(y)
-  # y = MaxPooling2D(2,2)(y)
-  # y = Dropout(0.3)(y)
+  y = MaxPooling2D(2,2)(y)
+  y = Dropout(0.3)(y)
 
   y = Conv2D(128, (3,3), activation='relu')(y)
-  # y = BatchNormalization(axis=-1)(y)
   y = Conv2D(128, (3,3), activation='relu')(y)
   y = BatchNormalization(axis=-1)(y)
   y = MaxPooling2D(2,2)(y)
@@ -113,7 +112,7 @@ def trainfn(model, inputs, labels):
 
 import time
 
-## TRAINING CUSTOM DCODNN ###
+### TRAINING CUSTOM DCODNN ###
 
 for epoch in range(epochs):
   start_epoch_time = time.time()
