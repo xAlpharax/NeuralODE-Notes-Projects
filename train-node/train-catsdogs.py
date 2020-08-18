@@ -78,9 +78,7 @@ def DCODNN(input_shape, num_classes):
 
 DCODNN = DCODNN((128, 80, 3), 2)
 
-DCODNN.summary()
-
-import matplotlib as plt
+import matplotlib.pyplot as plt
 plt.imshow(x_train[654])
 
 batch_size = 256
