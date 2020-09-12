@@ -25,6 +25,7 @@ from odeblocktensorflow import ODEBlock
 
 ######################################################
 
+#large DCODNN network
 def DCODNN(input_shape, num_classes):
   x = Input(input_shape)
   y = Conv2D(32, (3,3), activation='relu')(x)

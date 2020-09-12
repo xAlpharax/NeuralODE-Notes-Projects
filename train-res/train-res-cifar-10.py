@@ -26,7 +26,7 @@ from tensorflow.keras.layers import Conv2D, BatchNormalization, Dense, Flatten, 
 from tensorflow.keras.models import Model
 from resblocktensorflow import ResBlock
 
-#lighter drcnn than on cifar
+#medium drcnn
 def drcnn(input_shape, num_classes):
     x = Input(input_shape)
     y = Conv2D(32, (3,3), activation='relu')(x)

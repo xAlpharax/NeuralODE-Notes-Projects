@@ -25,6 +25,7 @@ from resblocktensorflow import ResBlock
 
 ######################################################
 
+#large DRCNN network
 def DRCNN(input_shape, num_classes):
   x = Input(input_shape)
   y = Conv2D(32, (3,3), activation='relu')(x)
