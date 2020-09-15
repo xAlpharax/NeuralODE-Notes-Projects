@@ -22,6 +22,10 @@ y_test  = tf.keras.utils.to_categorical(y_test, num_classes)
 
 ####################################################################
 
+from tensorflow.keras.layers import Conv2D, BatchNormalization, Dense, Flatten, Input, MaxPooling2D, Dropout
+from tensorflow.keras.models import Model
+from odeblocktensorflow import ODEBlock
+
 #medium dcodnn
 def dcodnn(input_shape, num_classes):
     x = Input(input_shape)
