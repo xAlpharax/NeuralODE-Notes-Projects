@@ -1,4 +1,4 @@
-tensorflow==2.0.0b0
+tensorflow==2.11.1
 tensorflow-scientific>=0.2.0.dev0
 numpy>=1.18
 pygal>=2.4.0
